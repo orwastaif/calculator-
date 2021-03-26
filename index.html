@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/calc.css">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <div class="choser">
+
+        <p class="main_calc to_calculator changer" onclick="toCalc()">Calculator</p>
+        <p class="main_len_conv to_length_convert changer" onclick="toLenConv()">Length Converter</p>
+        <p class="main_mass_conv to_mass_convert changer" onclick="toMassConv()">Mass Converter</p>
+
+    </div>
+
+    <div class="main_calc calculator" id="main_calc_id">
+
+        <div class="main_calc history">
+            <input type="text" class="main_calc history_text" id="history_text" disabled>
+            <input type="text" class="main_calc display" value="0" id="display">
+        </div>
+
+        <div class="main_calc buttons">
+
+            <div class="main_calc row">
+                <div class="main_calc angle_div angle">DEG</div>
+                <button value="RAD" class="main_calc angle">RAD</button>
+                <button value="DEG" class="main_calc angle">DEG</button>
+
+            </div>
+
+            <div class="main_calc row">
+                <button value="cos" class="main_calc trigonometric_operator alt_operator">cos</button>
+                <button value="sin" class="main_calc trigonometric_operator alt_operator">sin</button>
+                <button value="tan" class="main_calc trigonometric_operator alt_operator">tan</button>
+            </div>
+
+            <div class="main_calc row">
+                <button value="pi" class="main_calc operator pi">&#960;</button>
+                <button value="e" class="main_calc  operator e">e</button>
+                <button value="(" class="main_calc operator brackets">(</button>
+                <button value=")" class="main_calc  operator brackets">)</button>
+            </div>
+
+            <div class="main_calc row">
+                <button value="log" class="main_calc logs">log</button>
+                <button value="ln" class="main_calc logs">ln</button>
+                <button value="&lt;" class="main_calc alt_operator delete_char">&lt;</button>
+                <button value="+/-;" class="main_calc operator change_sign">+/-</button>
+                <button value="%" class="main_calc operator percents">%</button>
+            </div>
+            
+            <div class="main_calc row">
+                <button value="7">7</button>
+                <button value="8">8</button>
+                <button value="9">9</button>
+                <button value="+" class="main_calc operator">+</button>
+                <button value="&Sqrt;" class="main_calc operator">&Sqrt;</button>
+            </div>
+
+            <div class="main_calc row">
+                <button value="4">4</button>
+                <button value="5">5</button>
+                <button value="6">6</button>
+                <button value="-" class="main_calc operator">-</button>
+                <button value="^" class="main_calc operator">^</button>
+            </div>
+
+            <div class="main_calc row">
+                <button value="1">1</button>
+                <button value="2">2</button>
+                <button value="3">3</button>
+                <button value="*" class="main_calc operator">*</button>
+                <button value="!" class="main_calc operator">n!</button>
+            </div>
+
+            <div class="main_calc row">
+                <button value="C" class="main_calc clear">C</button>
+                <button value="0">0</button>
+                <button value="." class="main_calc separator">.</button>
+                <button value="/" class="main_calc operator">/</button>
+                <button value="=" class="main_calc equal">=</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="main_len_conv len_conv off" id="main_len_conv">
+
+        <p>
+            <label>Feet</label>
+            <input class="display_len_conv" id="inputFeet" type="number" placeholder="Feet"
+            oninput="feetToCMeters(this.value), feetToMeters(this.value), feetToMiles(this.value), feetToInches(this.value), feetToFeet(this.value)" 
+            onchange="feetToCMeters(this.value), feetToMeters(this.value), feetToMiles(this.value), feetToInches(this.value), feetToFeet(this.value)">
+        </p>
+
+        <p>
+            <label>Meters</label>
+            <input class="display_len_conv" id="inputMeters" type="number" placeholder="Meters"
+            oninput="metersToCMeters(this.value), metersToMeters(this.value), metersToMiles(this.value), metersToInches(this.value), metersToFeet(this.value)" 
+            onchange="metersToCMeters(this.value), metersToMeters(this.value), metersToMiles(this.value), metersToInches(this.value), metersToFeet(this.value)">
+        </p>
+
+        <p>
+            <label>Miles</label>
+            <input class="display_len_conv" id="inputMiles" type="number" placeholder="Miles"
+            oninput="milesToCMeters(this.value), milesToMeters(this.value), milesToMiles(this.value), milesToInches(this.value), milesToFeet(this.value)" 
+            onchange="milesToCMeters(this.value), milesToMeters(this.value), milesToMiles(this.value), milesToInches(this.value), milesToFeet(this.value)">
+        </p>
+
+        <p>
+            <label>Inches</label>
+            <input class="display_len_conv" id="inputInches" type="number" placeholder="Inches"
+            oninput="inchesToCMeters(this.value), inchesToMeters(this.value), inchesToMiles(this.value), inchesToInches(this.value), inchesToFeet(this.value)" 
+            onchange="inchesToCMeters(this.value), inchesToMeters(this.value), inchesToMiles(this.value), inchesToInches(this.value), inchesToFeet(this.value)">
+        </p>
+
+        <p>Feet: <span id="outputFeet"></span></p>
+        <p>CMetres: <span id="outputCMeters"></span></p>
+        <p>Meters: <span id="outputMeters"></span></p>
+        <p>Miles: <span id="outputMiles"></span></p>
+        <p>Inches: <span id="outputInches"></span></p>
+
+    </div>
+
+    <div class="main_Mass_conv Mass_conv off" id="main_Mass_conv">
+
+        <p>
+            <label>Miligrams</label>
+            <input class="display_Mass_conv" id="inputFeet" type="number" placeholder="Miligrams"
+            oninput="MiligramToMiligram(this.value), MiligramToGram(this.value), MiligramToKilogram(this.value), MiligramToT(this.value)" 
+            onchange="MiligramToMiligram(this.value), MiligramToGram(this.value), MiligramToKilogram(this.value), MiligramToT(this.value)">
+        </p>
+
+        <p>
+            <label>Grams</label>
+            <input class="display_Mass_conv" id="inputMeters" type="number" placeholder="Grams"
+            oninput="GramToMiligram(this.value), GramToGram(this.value), GramToKilogram(this.value), GramToT(this.value)" 
+            onchange="GramToMiligram(this.value), GramToGram(this.value), GramToKilogram(this.value), GramToT(this.value)">
+        </p>
+
+        <p>
+            <label>Kilograms</label>
+            <input class="display_Mass_conv" id="inputMiles" type="number" placeholder="Kilograms"
+            oninput="KilogramToMiligram(this.value), KilogramToGram(this.value), KilogramToKilogram(this.value), KilogramToT(this.value)" 
+            onchange="KilogramToMiligram(this.value), KilogramToGram(this.value), KilogramToKilogram(this.value), KilogramToT(this.value)">
+        </p>
+
+        <p>
+            <label>Tons</label>
+            <input class="display_Mass_conv" id="inputInches" type="number" placeholder="Tons"
+            oninput="TToMiligram(this.value), TToGram(this.value), TToKilogram(this.value), TToT(this.value)" 
+            onchange="TToMiligram(this.value), TToGram(this.value), TToKilogram(this.value), TToT(this.value)">
+        </p>
+
+        <p>Miligrams: <span id="outputMiligram"></span></p>
+        <p>Grams: <span id="outputGram"></span></p>
+        <p>Kilograms: <span id="outputKilogram"></span></p>
+        <p>Tons: <span id="outputT"></span></p>
+        
+
+    </div>
+
+    <script type="text/javascript" src="js/calc.js"></script>
+
+</body>
+
+</html>
